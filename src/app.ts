@@ -2,9 +2,9 @@ import express, {Request, Response, NextFunction} from 'express';
 
 const app = express();
 
-app.get('/', (request:Request, response:Response, next: NextFunction) => {
+app.get('/:id', (request:Request, response:Response, next: NextFunction) => {
   const json = {
-    id:'a',
+    id: request.params.id,
     pwd:'b'
   }
   response.json(json)
