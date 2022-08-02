@@ -20,7 +20,7 @@ import {
     passwordErrorApex,
     Sales
 } from "./common/apex";
-
+652BDE771ADB3C5F215AB01A83537A374B3820A7
 let uidInfo:any = {};
 let uid = '652BDE771ADB3C5F215AB01A83537A374B3820A7';
 
