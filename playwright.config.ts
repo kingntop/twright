@@ -13,7 +13,7 @@ import { devices } from '@playwright/test';
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 30 * 1000 * 10,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -46,6 +46,7 @@ const config: PlaywrightTestConfig = {
   projects: [
    
     {
+      
       "Blackberry PlayBook": {
         "userAgent": "Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.1.0; en-US) AppleWebKit/536.2+ (KHTML like Gecko) Version/16.0 Safari/536.2+",
         "viewport": {

@@ -21,53 +21,44 @@ import {
     Sales
 } from "./common/apex";
 
-let uid:any = {};
+let uidInfo:any = {};
+let uid = '652BDE771ADB3C5F215AB01A83537A374B3820A7';
+
 test.describe('test', async () => {
 
     test.beforeAll(async ({ browser }) => {
+        
+        uidInfo = await getUid(uid)
+        // uid.url = 'https://google.com'
         let rimraf = require("rimraf");
-        rimraf("images/", function () { console.log("done"); });
-        // uid = await getUid('652BDE771ADB3C5F215AB01A83537A374B3820A7')
-        uid.url = 'https://google.com'
+        rimraf("images/"+uid, function () { console.log("done"); });
         console.log(uid)
     })
 
     test('test', async ({  }) => {
 
-        const {chromium, firefox, webkit} = playwright
+        const browserTypes =  [chromium, webkit, firefox];
 
-        const screen = [
-            {
-                width: 800,
-                height: 600
-            },
-            {
-                width: 1000,
-                height: 600
-            },
-        ]
-        const browserTypes =  [chromium, webkit];
-        for (let i =0; i < browserTypes.length; i++ )  {
-            const browser = await browserTypes[i].launch();
-            const device = devices['iPhone 6']
-            const context = await browser.newContext(
-                {
-                   ...device
+        for (const browserType of browserTypes)  {
+
+            for (const screen of uidInfo.screen) {
+                
+                const browser = await browserType.launch();
+                const device = devices[screen.description]
+                const context = await browser.newContext( {...device });
+
+                if (browserType.name() == device.defaultBrowserType) {
+                    const page = await context.newPage()
+                    let  start_mi = Date.now();
+                    await page.goto(uidInfo.url, { waitUntil: 'networkidle'  });
+                    page.on("pageerror", (err) => {
+                        console.log(err.message)
+                    })
+                    await page.screenshot({ path: 'images/' + uid + '/' + screen.code +'.png', fullPage: true });
+                    let end_mi = Date.now();
+                    console.log(start_mi, end_mi, end_mi - start_mi, browserType.name(), browser.version());
                 }
-            );
-            
-            const page = await context.newPage()
-            let  start_mi =Date.now();
-
-            await page.goto(uid.url, { waitUntil: 'networkidle'  });
-            page.on("pageerror", (err) => {
-                console.log(err.message)
-            })
-
-            await page.screenshot({ path: 'images/' + start_mi+'.png', fullPage: true });
-            let end_mi = Date.now();
-            console.log(start_mi, end_mi, end_mi - start_mi, browserTypes[i].name(), browser.version());
+            }
         }
-
     });
 })
