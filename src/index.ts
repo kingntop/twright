@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
+app.use('/images', express.static('images'));
 
 app.get('/welcome', (req: Request, res: Response, next: NextFunction) => {
     res.send('welcome!');
