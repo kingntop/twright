@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+const { exec } = require("child_process");
 
 const app = express();
 
@@ -7,6 +8,7 @@ app.use('/images', express.static('images'));
 app.get('/', (request:Request, response:Response, next: NextFunction) => {
   response.send('welcome!');
 });
+
 
 app.get('/:id', async (request:Request, response:Response, next: NextFunction) => {
   const json = {
