@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo -i -u spacebank bash << EOF
+# sudo -i -u spacebank bash << EOF
 
-cd /home/spacebank/twright
+# cd $PWD
 
 /usr/bin/npx playwright test test-1
