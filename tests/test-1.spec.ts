@@ -20,14 +20,16 @@ import {
     passwordErrorApex,
     Sales
 } from "./common/apex";
-652BDE771ADB3C5F215AB01A83537A374B3820A7
+
+// http://146.56.47.30:3000/images//652BDE771ADB3C5F215AB01A83537A374B3820A7/1.png
+
 let uidInfo:any = {};
 let uid = '652BDE771ADB3C5F215AB01A83537A374B3820A7';
 
 test.describe('test', async () => {
 
     test.beforeAll(async ({ browser }) => {
-        
+
         uidInfo = await getUid(uid)
         // uid.url = 'https://google.com'
         let rimraf = require("rimraf");

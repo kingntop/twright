@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon --exec node --loader ts-node/esm src/index.ts",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "playwright": "npx playwright test"
   },
   "author": "",
   "license": "ISC",
