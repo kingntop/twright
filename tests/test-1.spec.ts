@@ -37,7 +37,7 @@ test.describe('test', async () => {
 
     test('test', async ({  }) => {
 
-        const browserTypes =  [chromium, webkit, firefox];
+        const browserTypes =  [chromium, webkit];
 
         for (const browserType of browserTypes)  {
 
