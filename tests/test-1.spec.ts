@@ -57,11 +57,16 @@ test.describe('test', async () => {
                     await page.screenshot({ path: 'images/' + uid + '/' + screen.code +'.png', fullPage: true });
                     let end_mi = Date.now();
                     console.log(start_mi, end_mi, end_mi - start_mi, browserType.name(), browser.version());
+
+                    const apexJson = {code : screen.code,
+                                      status : 0,
+                                      dcl : end_mi - start_mi
+                                    }     
+                    postApex(uid, apexJson)
                 }
             }
         }
 
-        const apexJson = {status : 0}        
-        postApex(uid, apexJson)
+
     });
 })
