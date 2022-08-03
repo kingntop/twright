@@ -39,27 +39,27 @@ test.describe('test', async () => {
 
         const browserTypes =  [chromium, webkit, firefox];
 
-        // for (const browserType of browserTypes)  {
+        for (const browserType of browserTypes)  {
 
-        //     for (const screen of uidInfo.screen) {
+            for (const screen of uidInfo.screen) {
                 
-        //         const browser = await browserType.launch();
-        //         const device = devices[screen.description]
-        //         const context = await browser.newContext( {...device });
+                const browser = await browserType.launch();
+                const device = devices[screen.description]
+                const context = await browser.newContext( {...device });
 
-        //         if (browserType.name() == device.defaultBrowserType) {
-        //             const page = await context.newPage()
-        //             let  start_mi = Date.now();
-        //             await page.goto(uidInfo.url, { waitUntil: 'networkidle'  });
-        //             page.on("pageerror", (err) => {
-        //                 console.log(err.message)
-        //             })
-        //             await page.screenshot({ path: 'images/' + uid + '/' + screen.code +'.png', fullPage: true });
-        //             let end_mi = Date.now();
-        //             console.log(start_mi, end_mi, end_mi - start_mi, browserType.name(), browser.version());
-        //         }
-        //     }
-        // }
+                if (browserType.name() == device.defaultBrowserType) {
+                    const page = await context.newPage()
+                    let  start_mi = Date.now();
+                    await page.goto(uidInfo.url, { waitUntil: 'networkidle'  });
+                    page.on("pageerror", (err) => {
+                        console.log(err.message)
+                    })
+                    await page.screenshot({ path: 'images/' + uid + '/' + screen.code +'.png', fullPage: true });
+                    let end_mi = Date.now();
+                    console.log(start_mi, end_mi, end_mi - start_mi, browserType.name(), browser.version());
+                }
+            }
+        }
 
         const apexJson = {status : 0}        
         postApex(uid, apexJson)
