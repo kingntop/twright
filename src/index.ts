@@ -3,7 +3,12 @@ import shellExec from 'shell-exec'
 
 const { exec } = require("child_process");
 
+//cors 모듈을 불러옵니다.
+var cors = require('cors');
+
+
 const app = express();
+app.use(cors());
 
 app.use('/images', express.static('images'));
 app.set("jsonp callback", true);
@@ -25,7 +30,7 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     code: 'S001',
     message:'Success'
 }
-response.jsonp(resJosn)
+// response.jsonp(resJosn)
   // response.send(request.query.callback + '('+ JSON.stringify(resJosn) + ');');
 
 });
