@@ -16,16 +16,15 @@ app.get('/', (request:Request, response:Response, next: NextFunction) => {
 app.get('/tw', async (request:Request, response:Response, next: NextFunction) => {
   let resJosn= {  }
   shellExec('/home/spacebank/twright/tw.sh').then( 
-    resJosn= {
-      code: 'S001',
-      message:'Success'
-    }
+
   ).catch () (
-    {
-    code: 'E001',
-    message:'Error'
-  }
+
   )
+  resJosn = {
+    code: 'S001',
+    message:'Success'
+  
+}
   response.json(resJosn)
 });
 
