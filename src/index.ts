@@ -14,9 +14,19 @@ app.get('/', (request:Request, response:Response, next: NextFunction) => {
 
 
 app.get('/tw', async (request:Request, response:Response, next: NextFunction) => {
-  shellExec('/home/spacebank/twright/tw.sh').then( console.log
-  ).catch(console.log)
-  response.send('welcome!');
+  let resJosn= {  }
+  shellExec('/home/spacebank/twright/tw.sh').then( 
+    resJosn= {
+      code: 'S001',
+      message:'Success'
+    }
+  ).catch () (
+    {
+    code: 'E001',
+    message:'Error'
+  }
+  )
+  response.json(resJosn)
 });
 
 
