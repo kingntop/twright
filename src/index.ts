@@ -16,8 +16,9 @@ app.get('/', (request:Request, response:Response, next: NextFunction) => {
 app.get('/tw', async (request:Request, response:Response, next: NextFunction) => {
   let resJosn= {  }
   shellExec('/home/spacebank/twright/tw.sh').then( 
-
-  ).catch () (
+    console.log
+  ).catch (
+    console.log
 
   )
   resJosn = {
