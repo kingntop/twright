@@ -21,7 +21,7 @@ app.get('/', (request:Request, response:Response, next: NextFunction) => {
 
 app.get('/tw', async (request:Request, response:Response, next: NextFunction) => {
   let resJosn= {  }
-  shellExec('/home/spacebank/twright/tw.sh').then( 
+  shellExec('/home/spacebank/twright/tw.sh').then(
     console.log
   ).catch (
     console.log
@@ -31,7 +31,7 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     message:'Success'
 }
 // response.jsonp(resJosn)
-  response.send(request.query.callback+ '('+ JSON.stringify(resJosn) + ');');
+  response.send('jsoncallback' + '('+ JSON.stringify(resJosn) + ');');
 
 });
 
