@@ -19,14 +19,14 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     console.log
   ).catch (
     console.log
-
   )
   resJosn = {
     code: 'S001',
     message:'Success'
-  
 }
-  response.json(resJosn)
+
+  response.send(request.query.callback + '('+ JSON.stringify(resJosn) + ');');
+
 });
 
 
