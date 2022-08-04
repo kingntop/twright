@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 
 app.use('/images', express.static('images'));
-app.set("jsonp callback", true);
+app.set('jsonp callback name', 'cb')
 
 app.get('/', (request:Request, response:Response, next: NextFunction) => {
   
@@ -31,8 +31,8 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     code: 'S001',
     message:'Success'
 }
-// response.jsonp(resJosn)
-  response.send('jsoncallback' + '('+ JSON.stringify(resJosn) + ');');
+response.jsonp(resJosn)
+  // response.send('jsoncallback' + '('+ JSON.stringify(resJosn) + ');');
 
 });
 
