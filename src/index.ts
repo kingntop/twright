@@ -31,7 +31,7 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     message:'Success'
 }
 // response.jsonp(resJosn)
-  response.send(request.query.callback + '('+ JSON.stringify(resJosn) + ');');
+  response.send('jsoncallback' + '('+ JSON.stringify(resJosn) + ');');
 
 });
 
