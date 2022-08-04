@@ -24,8 +24,8 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     code: 'S001',
     message:'Success'
 }
-
-  response.send(request.query.callback + '('+ JSON.stringify(resJosn) + ');');
+response.jsonp(resJosn)
+  // response.send(request.query.callback + '('+ JSON.stringify(resJosn) + ');');
 
 });
 
