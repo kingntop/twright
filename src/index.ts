@@ -6,6 +6,7 @@ const { exec } = require("child_process");
 const app = express();
 
 app.use('/images', express.static('images'));
+app.set("jsonp callback", true);
 
 app.get('/', (request:Request, response:Response, next: NextFunction) => {
   
