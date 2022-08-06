@@ -1,24 +1,19 @@
 import express, { Request, Response, NextFunction } from 'express';
 import shellExec from 'shell-exec'
-
-const { exec } = require("child_process");
-
-//cors 모듈을 불러옵니다.
-var cors = require('cors');
-
+import morganMiddleware from './common/morganMiddleware'; 
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 
+app.use(morganMiddleware)
 app.use('/images', express.static('images'));
-app.set('jsonp callback name', 'jsoncallback')
+
+// app.set('jsonp callback name', 'jsoncallback')
 
 app.get('/', (request:Request, response:Response, next: NextFunction) => {
-  
-  response.send('welcome!');
+  response.send('Home!');
 });
-
 
 app.get('/tw', async (request:Request, response:Response, next: NextFunction) => {
   let resJosn= {  }
@@ -31,8 +26,8 @@ app.get('/tw', async (request:Request, response:Response, next: NextFunction) =>
     code: 'S001',
     message:'Success'
 }
-// response.jsonp(resJosn)
-  response.send('callback' + '('+ JSON.stringify(resJosn) + ');');
+response.jsonp(resJosn)
+  // response.send('callback' + '('+ JSON.stringify(resJosn) + ');');
 
 });
 

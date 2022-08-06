@@ -48,8 +48,6 @@ async function getUidAll(): Promise < any[] > {
     return response.data.items
 }
 
-
-
 async function postApex(rid : String, upJson: any):Promise < boolean > {
     const request_config = {
         headers: {

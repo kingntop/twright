@@ -3,9 +3,10 @@
       "target": "es2017",
       "module":"commonjs",
       "outDir":"./dist",
-      "rootDir":"./tests",
+      "rootDir":"./src",
       "strict": true,
       "moduleResolution":"node",
-      "esModuleInterop":true
+      "esModuleInterop":true,
+      "sourceMap": true,
      }
     }

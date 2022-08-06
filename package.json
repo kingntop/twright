@@ -22,13 +22,17 @@
     "zx": "^7.0.8"
   },
   "dependencies": {
+    "@types/morgan": "^1.9.3",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dayjs": "^1.11.4",
+    "morgan": "^1.10.0",
     "nodejs-wait": "^1.0.3",
     "playwright": "^1.24.0",
     "rimraf": "^3.0.2",
     "shell-exec": "^1.1.2",
-    "unix-timestamp": "^1.0.2"
+    "tslog": "^3.3.3",
+    "unix-timestamp": "^1.0.2",
+    "winston": "^3.8.1"
   }
 }
