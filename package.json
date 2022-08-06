@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon --exec node --loader ts-node/esm src/index.ts",
-    "prod": "pm2 --exec node --loader ts-node/esm src/index.ts",
+    "prod": "pm2 start dist/index.js --name twright",
     "build": "tsc -p .",
     "playwright": "npx playwright test"
   },
